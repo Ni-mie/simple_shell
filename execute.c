@@ -7,7 +7,7 @@ void execute_command(char* command)
 
 	while (token != NULL)
 	{
-		if (strlen(token) > 0)
+		if (count_str(token) > 0)
 		{
 			char* args[MAX_ARGS + 2];
 			int n_args = 0;
@@ -143,11 +143,11 @@ void execute()
 		{
 			exit_shell();
 		}
-		if (strlen(command) == 0 || strlen(command) >=
+		if (count_str(command) == 0 || strlen(command) >=
 		    MAX_COMMAND_LENGTH)
 		{
-			const char invalid[] = "Invalid command\n";
-			write(STDOUT_FILENO, invalid, sizeof(invalid) - 1);
+			char invalid[] = "Invalid command\n";
+			write(STDOUT_FILENO, invalid, count_str(invalid));
 			continue;
 		}
 		if (_strcmp(command, "exit") == 0)

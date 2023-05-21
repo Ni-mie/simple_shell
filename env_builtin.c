@@ -90,7 +90,7 @@ ssize_t custom_getline(char **lineptr, size_t *n)
 
 	return (-1);
 }
-void setenv_builtin(char** args)
+void setenv_builtin(char **args)
 {
 	if (args[1] == NULL || args[2] == NULL)
 	{
