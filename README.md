@@ -1,1 +1,1 @@
-This is the root directory of simple shell
+This is the root directory for simple shell
