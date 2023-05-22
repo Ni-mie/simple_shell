@@ -35,13 +35,10 @@ char *find_command_path(const char *command)
 	{
 		char *path_copy = mystrdup(path);
 		char *dir = path_copy;
-		char *delimiter = mystrchr(dir, ':');
 		char path[MAX_COMMAND_LENGTH];
 
 		while (dir != NULL)
 		{
-			if (delimiter != NULL)
-				*delimiter = '\0';
 			_snprintf(path,
 				  MAX_COMMAND_LENGTH, "%s/%s", dir, command);
 			if (access(path, X_OK) == 0)
@@ -49,18 +46,9 @@ char *find_command_path(const char *command)
 				free(path_copy);
 				return (mystrdup(path));
 			}
-			if (delimiter != NULL)
-			{
-				dir = delimiter + 1;
-				delimiter = mystrchr(dir, ':');
-			}
-			else
-			{
-				dir = NULL;
-			}
+			dir = strtok(NULL, ":");
 		}
 		free(path_copy);
-		free(delimiter);
 	}
 	return (NULL);
 }

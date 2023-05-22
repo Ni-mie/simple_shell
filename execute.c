@@ -143,7 +143,7 @@ void execute()
 		{
 			exit_shell();
 		}
-		if (count_str(command) == 0 || strlen(command) >=
+		if (count_str(command) == 0 || count_str(command) >=
 		    MAX_COMMAND_LENGTH)
 		{
 			char invalid[] = "Invalid command\n";
@@ -154,7 +154,7 @@ void execute()
 		{
 			exit_shell();
 		}
-		else if (strncmp(command, "exit ", 5) == 0)
+		else if (mystrncmp(command, "exit ", 5) == 0)
 		{
 			execute_command(command);
 			break;
@@ -163,7 +163,7 @@ void execute()
 		{
 			cd_builtin(NULL);
 		}
-		else if (strncmp(command, "cd ", 3) == 0)
+		else if (mystrncmp(command, "cd ", 3) == 0)
 		{
 			char* directory = command + 3;
 			cd_builtin(directory);

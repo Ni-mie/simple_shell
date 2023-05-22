@@ -95,7 +95,6 @@ void setenv_builtin(char **args)
 	if (args[1] == NULL || args[2] == NULL)
 	{
 		_fprintf("Usage: setenv VARIABLE VALUE\n");
-		return;
 	}
 
 	if (setenv(args[1], args[2], 1) == -1)
