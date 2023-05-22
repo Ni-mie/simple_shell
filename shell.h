@@ -41,4 +41,5 @@ int mypow(int num, int power);
 int _putchar(char c);
 char *mystrdup(const char *s);
 char *mystrchr (const char *str, char c);
+int mystrncmp(const char *str1, const char *str2, int n);
 #endif
