@@ -98,3 +98,49 @@ int mystrncmp(const char *str1, const char *str2, int n)
 	}
 	return (0);
 }
+
+/**
+ * mystrcat - it concatenate two strings
+ * @dest: destination string
+ * @src: source string
+ * Return: Returns the concatenated string
+ */
+
+char *mystrcat(char *dest, const char *src)
+{
+	int ldest = 0, lsrc = 0, totallen = 0, i, j, k = 0, ccount = 0, ncount = 0;
+	char *ptr;
+
+	ldest = ldest + count_str(dest);
+
+	while (src[lsrc] != '\0')
+		lsrc = lsrc + 1;
+	totallen = ldest + lsrc + 1;
+	ptr = malloc(totallen);
+	if (ptr == NULL)
+	{
+		display_str("Unable to allocate memory\n");
+		exit(0);
+	}
+	for (i = 0; i < ldest; i++)
+	{
+		*(ptr + i) = dest[i];
+	}
+	for (j = i; j < totallen - 1; j++)
+	{
+		*(ptr + j) = src[k];
+		k++;
+	}
+	while (ccount < ldest)
+	{
+		dest++;
+		ccount = ccount + 1;
+	}
+	while (ncount < lsrc)
+	{
+		*dest = src[ncount];
+		ncount = ncount + 1;
+		dest++;
+	}
+	return (ptr);
+}
