@@ -144,3 +144,32 @@ char *mystrcat(char *dest, const char *src)
 	}
 	return (ptr);
 }
+/**
+ * mystrcpy - it copys from source to dest
+ * @dest: Destination variable
+ * @src: Source destination
+ * Return: Returns the pointer
+ */
+char *mystrcpy(char *dest, const char *src)
+{
+	int ldest = 0, lsrc = 0, totallen = 0, i;
+	char *ptr;
+
+	ldest = 100;
+	while (src[lsrc] != '\0')
+		lsrc = lsrc + 1;
+	totallen = lsrc + 1;
+	ptr = malloc(totallen);
+	if (ptr == NULL)
+	{
+		display_str("Unable to allocate memory\n");
+		exit(0);
+	}
+	for (i = 0; i < lsrc + 1; i++)
+	{
+		*dest = src[i];
+		*(ptr + i) = src[i];
+		dest++;
+	}
+	return (ptr);
+}

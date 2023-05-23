@@ -1,15 +1,18 @@
 #include "shell.h"
-
-void execute_command(char* command)
+/**
+ * execute_command - executes all the command
+ * @command: Input variable
+ */
+void execute_command(char *command)
 {
-	char* token = strtok(command, ";");
+	char *token = strtok(command, ";");
 	int prev_status = 0;
 
 	while (token != NULL)
 	{
 		if (count_str(token) > 0)
 		{
-			char* args[MAX_ARGS + 2];
+			char *args[MAX_ARGS + 2];
 			int n_args = 0;
 			int arg_start = -1;
 			int i;
@@ -50,6 +53,7 @@ void execute_command(char* command)
 				if (n_args > 1)
 				{
 					int status = _atoi(args[1]);
+
 					exit(status);
 				}
 				else
@@ -84,6 +88,7 @@ void execute_command(char* command)
 				else
 				{
 					int status;
+
 					if (waitpid(pid, &status, 0) == -1)
 					{
 						perror("waitpid");
@@ -117,11 +122,14 @@ void execute_command(char* command)
 		token = strtok(NULL, ";");
 	}
 }
-void execute()
+/**
+ * execute - execute function
+ */
+void execute(void)
 {
 	char command[MAX_COMMAND_LENGTH];
 	int token_start = 0;
-        int token_end = 0;
+	int token_end = 0;
 	int i = 0;
 	char c;
 
@@ -147,6 +155,7 @@ void execute()
 		    MAX_COMMAND_LENGTH)
 		{
 			char invalid[] = "Invalid command\n";
+
 			write(STDOUT_FILENO, invalid, count_str(invalid));
 			continue;
 		}
@@ -165,7 +174,8 @@ void execute()
 		}
 		else if (mystrncmp(command, "cd ", 3) == 0)
 		{
-			char* directory = command + 3;
+			char *directory = command + 3;
+
 			cd_builtin(directory);
 		}
 		while (command[token_end] != '\0')

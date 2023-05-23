@@ -1,21 +1,30 @@
 #include "shell.h"
-
-void env_builtin()
+/**
+ * env_builtin - environment builtin function
+ */
+void env_builtin(void)
 {
-    char **env = environ;
+	char **env = environ;
 
-    while (*env != NULL)
-    {
-	    char *curr = *env;
-	    while (*curr != '\0')
-	    {
-		    write(STDOUT_FILENO, curr, 1);
-		    curr++;
-	    }
-	    write(STDOUT_FILENO, "\n", 1);
-	    env++;
-    }
+	while (*env != NULL)
+	{
+		char *curr = *env;
+
+		while (*curr != '\0')
+		{
+			write(STDOUT_FILENO, curr, 1);
+			curr++;
+		}
+		write(STDOUT_FILENO, "\n", 1);
+		env++;
+	}
 }
+/**
+ * custom_getline - getline function
+ * @lineptr: input value
+ * @n: Input value
+ * Return: Always success
+ */
 ssize_t custom_getline(char **lineptr, size_t *n)
 {
 	static char buffer[BUFFER_SIZE];
@@ -45,7 +54,8 @@ ssize_t custom_getline(char **lineptr, size_t *n)
 
 	while (1)
 	{
-		if (buffer_pos >= (size_t)bytes_read) {
+		if (buffer_pos >= (size_t)bytes_read)
+		{
 			bytes_read = read(STDIN_FILENO, buffer, BUFFER_SIZE);
 			if (bytes_read <= 0)
 			{
@@ -90,6 +100,11 @@ ssize_t custom_getline(char **lineptr, size_t *n)
 
 	return (-1);
 }
+/**
+ * setenv_builtin - set_environment function
+ * @args: Input value
+ */
+
 void setenv_builtin(char **args)
 {
 	if (args[1] == NULL || args[2] == NULL)
@@ -103,8 +118,11 @@ void setenv_builtin(char **args)
 		return;
 	}
 }
-
-void unsetenv_builtin(char** args)
+/**
+ * unsetenv_builtin - set_environment function
+ * @args: Input value
+ */
+void unsetenv_builtin(char **args)
 {
 	if (args[1] == NULL)
 	{
@@ -116,5 +134,5 @@ void unsetenv_builtin(char** args)
 	{
 		perror("unsetenv");
 		return;
-    }
+	}
 }
