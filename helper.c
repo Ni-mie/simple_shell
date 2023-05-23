@@ -152,10 +152,9 @@ char *mystrcat(char *dest, const char *src)
  */
 char *mystrcpy(char *dest, const char *src)
 {
-	int ldest = 0, lsrc = 0, totallen = 0, i;
+	int lsrc = 0, totallen = 0, i;
 	char *ptr;
 
-	ldest = 100;
 	while (src[lsrc] != '\0')
 		lsrc = lsrc + 1;
 	totallen = lsrc + 1;

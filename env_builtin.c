@@ -28,20 +28,14 @@ void env_builtin(void)
 ssize_t custom_getline(char **lineptr, size_t *n)
 {
 	static char buffer[BUFFER_SIZE];
-	static size_t buffer_pos = 0;
-	static ssize_t bytes_read = 0;
-
-	size_t count = 0;
-	size_t size = *n;
+	static size_t buffer_pos, bytes_read;
+	size_t count = 0, size = *n;
 	char *line = *lineptr;
 	int eof_reached = 0;
 	char *new_line = realloc(*lineptr, size);
 
 	if (lineptr == NULL || n == NULL)
-	{
 		return (-1);
-	}
-
 	if (*lineptr == NULL || *n == 0)
 	{
 		*lineptr = malloc(BUFFER_SIZE);
@@ -71,21 +65,17 @@ ssize_t custom_getline(char **lineptr, size_t *n)
 			{
 				size *= 2;
 				if (new_line == NULL)
-				{
 					return (-1);
-				}
 				line = new_line;
 				*lineptr = new_line;
 				*n = size;
 			}
-
 			if (buffer[buffer_pos] == '\n')
 			{
 				buffer_pos++;
 				line[count] = '\0';
 				return (count);
 			}
-
 			line[count] = buffer[buffer_pos];
 			count++;
 			buffer_pos++;
@@ -108,10 +98,7 @@ ssize_t custom_getline(char **lineptr, size_t *n)
 void setenv_builtin(char **args)
 {
 	if (args[1] == NULL || args[2] == NULL)
-	{
 		_fprintf("Usage: setenv VARIABLE VALUE\n");
-	}
-
 	if (setenv(args[1], args[2], 1) == -1)
 	{
 		perror("setenv");
