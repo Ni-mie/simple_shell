@@ -14,7 +14,7 @@
 #include <sys/wait.h>
 #include <stdarg.h>
 
-#define MAX_COMMAND_LENGTH 20
+#define MAX_COMMAND_LENGTH 30
 #define MAX_ARGS 10
 #define BUFFER_SIZE 1024
 

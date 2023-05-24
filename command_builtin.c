@@ -4,7 +4,7 @@
  */
 void print_prompt(void)
 {
-	char prompt[] = "$";
+	char prompt[] = "$ ";
 
 	if (isatty(STDIN_FILENO))
 	{

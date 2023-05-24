@@ -48,17 +48,23 @@ void execute_command(char *command)
 			{
 				env_builtin();
 			}
-			else if (_strcmp(args[0], "exit") == 0)
-			{
-				if (n_args > 1)
-				{
-					int status = _atoi(args[1]);
-
-					exit(status);
-				}
-				else
-					exit(EXIT_SUCCESS);
-			}
+			 if (_strcmp(args[0], "exit") == 0)
+			 {
+				 if (isatty(STDIN_FILENO))
+				 {
+					 if (n_args > 1)
+					 {
+						 int status = _atoi(args[1]);
+						 exit(status);
+					 }
+					 else
+					 {
+						 exit(EXIT_SUCCESS);
+					 }
+				 }
+				 else
+					 return;
+			 }
 			else if (_strcmp(args[0], "cd") == 0)
 			{
 				if (n_args == 1)
@@ -75,7 +81,7 @@ void execute_command(char *command)
 				if (pid == -1)
 				{
 					perror("fork");
-					exit(EXIT_FAILURE);
+					return;
 				}
 				else if (pid == 0)
 				{
