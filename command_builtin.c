@@ -4,9 +4,12 @@
  */
 void print_prompt(void)
 {
-	char prompt[] = "$ ";
+	char prompt[] = "$";
 
-	write(STDOUT_FILENO, prompt, count_str(prompt));
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, prompt, count_str(prompt));
+	}
 }
 /**
  * exit_shell - function that exits from shell
