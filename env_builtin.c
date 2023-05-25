@@ -15,8 +15,6 @@ void env_builtin(void)
 			write(STDOUT_FILENO, curr, 1);
 			curr++;
 		}
-		write(STDOUT_FILENO, "\n", 1);
-		env++;
 	}
 }
 /**

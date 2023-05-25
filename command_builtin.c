@@ -16,9 +16,6 @@ void print_prompt(void)
  */
 void exit_shell(void)
 {
-	char goodbye[] = "\nGoodbye!\n";
-
-	write(STDOUT_FILENO, goodbye, count_str(goodbye));
 	exit(EXIT_SUCCESS);
 }
 /**
