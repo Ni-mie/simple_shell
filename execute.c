@@ -155,7 +155,7 @@ void execute(void)
 
 		if (c == EOF)
 		{
-			exit_shell();
+			return;
 		}
 		if (count_str(command) == 0 || count_str(command) >=
 		    MAX_COMMAND_LENGTH)
