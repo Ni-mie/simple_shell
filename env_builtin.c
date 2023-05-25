@@ -4,17 +4,13 @@
  */
 void env_builtin(void)
 {
-	char **env = environ;
+	int i = 0;
 
-	while (*env != NULL)
+	while (environ[i] != NULL)
 	{
-		char *curr = *env;
-
-		while (*curr != '\0')
-		{
-			write(STDOUT_FILENO, curr, 1);
-			curr++;
-		}
+		write(STDOUT_FILENO, environ[i], count_str(environ[i]));
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
 	}
 }
 /**

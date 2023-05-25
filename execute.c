@@ -44,10 +44,7 @@ void execute_command(char *command)
 
 			args[n_args] = NULL;
 
-			if (_strcmp(args[0], "env") == 0)
-			{
-				env_builtin();
-			}
+			
 			 if (_strcmp(args[0], "exit") == 0)
 			 {
 				 if (isatty(STDIN_FILENO))
