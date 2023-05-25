@@ -16,7 +16,7 @@ void print_prompt(void)
  */
 void exit_shell(void)
 {
-		exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 /**
  * find_command_path - function that find paths

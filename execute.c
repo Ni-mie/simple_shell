@@ -167,8 +167,8 @@ void execute(void)
 		}
 		else if (mystrncmp(command, "exit ", 5) == 0)
 		{
-			exit_shell_with_status();
-			break;
+			execute_command(command);
+			return;
 		}
 		else if (_strcmp(command, "cd") == 0)
 		{
