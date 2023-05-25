@@ -44,8 +44,7 @@ void execute_command(char *command)
 
 			args[n_args] = NULL;
 
-			
-			 if (_strcmp(args[0], "exit") == 0)
+			if (_strcmp(args[0], "exit") == 0)
 			 {
 				 if (isatty(STDIN_FILENO))
 				 {
@@ -168,7 +167,7 @@ void execute(void)
 		}
 		else if (mystrncmp(command, "exit ", 5) == 0)
 		{
-			execute_command(command);
+			exit_shell_with_status();
 			break;
 		}
 		else if (_strcmp(command, "cd") == 0)

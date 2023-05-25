@@ -16,7 +16,7 @@ void print_prompt(void)
  */
 void exit_shell(void)
 {
-	exit(EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 }
 /**
  * find_command_path - function that find paths
@@ -98,4 +98,11 @@ void cd_builtin(char *directory)
 	}
 	write(STDOUT_FILENO, current_dir, count_str(current_dir));
 	write(STDOUT_FILENO, "\n", 1);
+}
+void exit_shell_with_status(void)
+{
+	int status = 0;
+	status = 42;
+
+	exit(status);
 }

@@ -20,6 +20,7 @@
 
 extern char **environ;
 
+void exit_shell_with_status(void);
 int execute_command2(const char* command);
 void print_prompt(void);
 void exit_shell(void);
