@@ -174,12 +174,6 @@ void execute(void)
 		{
 			cd_builtin(NULL);
 		}
-		else if (mystrncmp(command, "cd ", 3) == 0)
-		{
-			char *directory = command + 3;
-
-			cd_builtin(directory);
-		}
 		while (command[token_end] != '\0')
 		{
 			if (command[token_end] == ';')

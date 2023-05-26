@@ -59,7 +59,6 @@ char *find_command_path(const char *command)
 void cd_builtin(char *directory)
 {
 	char current_dir[1024];
-	char *setenv_args[] = { "setenv", "PWD", NULL, NULL };
 
 	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
 	{
@@ -89,14 +88,14 @@ void cd_builtin(char *directory)
 		perror("chdir");
 		return;
 	}
-	setenv_args[2] = (char *)directory;
-	setenv_builtin(setenv_args);
+
 	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
 	{
 		perror("getcwd");
 		return;
 	}
-	write(STDOUT_FILENO, current_dir, count_str(current_dir));
+
+	write(STDOUT_FILENO, directory, count_str(directory));
 	write(STDOUT_FILENO, "\n", 1);
 }
 void exit_shell_with_status(void)
