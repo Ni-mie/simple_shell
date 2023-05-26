@@ -140,7 +140,7 @@ void execute(void)
 		print_prompt();
 
 		i = 0;
-		while ((c = getchar()) != EOF && c != '\n')
+		while ((c = _getchar()) != EOF && c != '\n')
 		{
 			if (i < MAX_COMMAND_LENGTH - 1)
 			{

@@ -25,7 +25,7 @@ void exit_shell(void)
  */
 char *find_command_path(const char *command)
 {
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 
 	if (access(command, X_OK) == 0)
 	{
@@ -98,10 +98,13 @@ void cd_builtin(char *directory)
 	write(STDOUT_FILENO, directory, count_str(directory));
 	write(STDOUT_FILENO, "\n", 1);
 }
+/**
+ * exit_shell_with_status - exit function
+ */
 void exit_shell_with_status(void)
 {
 	int status = 0;
-	status = 42;
 
+	status = 42;
 	exit(status);
 }

@@ -172,3 +172,14 @@ char *mystrcpy(char *dest, const char *src)
 	}
 	return (ptr);
 }
+
+/**
+ * _getchar - getchar custom function
+ * Return: Return results
+ */
+int _getchar(void)
+{
+	char c;
+
+	return (read(0, &c, 1) == 1 ? (int) c : EOF);
+}
