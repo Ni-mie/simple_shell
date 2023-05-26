@@ -56,47 +56,48 @@ char *find_command_path(const char *command)
  * cd_builtin - builtin function
  * @directory: Input variable
  */
-void cd_builtin(char *directory)
+int cd_builtin(char *args)
 {
-	char current_dir[1024];
+	char *newDir;
+	char *oldDir = getcwd(NULL, 0);
 
-	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
+	if (args == NULL || _strcmp(args, "~") == 0)
+	{
+		newDir = _getenv("HOME");
+	}
+	else if (_strcmp(args, "-") == 0)
+	{
+		newDir = _getenv("OLDPWD");
+	}
+	else
+	{
+		newDir = args;
+	}
+	if (oldDir == NULL)
 	{
 		perror("getcwd");
-		return;
+		return (-1);
 	}
-	if (directory == NULL || _strcmp(directory, "") == 0)
+	if (chdir(newDir) == -1)
 	{
-		directory = _getenv("HOME");
-		if (directory == NULL)
-		{
-			perror("cd");
-			return;
-		}
+		perror("cd");
+		free(oldDir);
+		return (-1);
 	}
-	if (_strcmp(directory, "-") == 0)
-	{
-		directory = _getenv("OLDPWD");
-		if (directory == NULL)
-		{
-			perror("cd");
-			return;
-		}
-	}
-	if (chdir(directory) == -1)
-	{
-		perror("chdir");
-		return;
-	}
-
-	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
-	{
-		perror("getcwd");
-		return;
-	}
-
-	write(STDOUT_FILENO, directory, count_str(directory));
-	write(STDOUT_FILENO, "\n", 1);
+	  if (setenv("OLDPWD", oldDir, 1) == -1)
+	  {
+		  perror("setenv");
+		  free(oldDir);
+		  return (-1);
+	  }
+	  if (setenv("PWD", getcwd(NULL, 0), 1) == -1)
+	  {
+		  perror("setenv");
+		  free(oldDir);
+		  return (-1);
+	  }
+	  free(oldDir);
+	  return (0);
 }
 /**
  * exit_shell_with_status - exit function

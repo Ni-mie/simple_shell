@@ -36,7 +36,7 @@ void setenv_builtin(char **args);
 void unsetenv_builtin(char **args);
 void _fprintf(const char *format, ...);
 int _snprintf(char *buffer, size_t size, const char *format, ...);
-void cd_builtin(char *directory);
+int cd_builtin(char *args);
 int _strcmp(const char *str1, const char *str2);
 int count_str(char *str);
 void display_str(char *str);
