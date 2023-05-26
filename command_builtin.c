@@ -67,7 +67,7 @@ void cd_builtin(char *directory)
 	}
 	if (directory == NULL || _strcmp(directory, "") == 0)
 	{
-		directory = getenv("HOME");
+		directory = _getenv("HOME");
 		if (directory == NULL)
 		{
 			perror("cd");
@@ -76,7 +76,7 @@ void cd_builtin(char *directory)
 	}
 	if (_strcmp(directory, "-") == 0)
 	{
-		directory = getenv("OLDPWD");
+		directory = _getenv("OLDPWD");
 		if (directory == NULL)
 		{
 			perror("cd");
