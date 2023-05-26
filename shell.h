@@ -13,6 +13,8 @@
 #include <errno.h>
 #include <sys/wait.h>
 #include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 #define MAX_COMMAND_LENGTH 30
 #define MAX_ARGS 10

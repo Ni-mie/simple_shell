@@ -93,7 +93,7 @@ void setenv_builtin(char **args)
 {
 	if (args[1] == NULL || args[2] == NULL)
 		_fprintf("Usage: setenv VARIABLE VALUE\n");
-	if (setenv(args[1], args[2], 1) == -1)
+	if (_setenv(args[1], args[2], 1) == -1)
 	{
 		perror("setenv");
 		return;
@@ -111,7 +111,7 @@ void unsetenv_builtin(char **args)
 		return;
 	}
 
-	if (unsetenv(args[1]) == -1)
+	if (_unsetenv(args[1]) == -1)
 	{
 		perror("unsetenv");
 		return;

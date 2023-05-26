@@ -25,7 +25,7 @@ void exit_shell(void)
  */
 char *find_command_path(const char *command)
 {
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 
 	if (access(command, X_OK) == 0)
 	{
