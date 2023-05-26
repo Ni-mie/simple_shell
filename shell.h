@@ -47,4 +47,10 @@ int mystrncmp(const char *str1, const char *str2, int n);
 char *mystrcat(char *dest, const char *src);
 char *mystrcpy(char *dest, const char *src);
 int _getchar();
+int _setenv(const char *name, const char *value, int overwrite);
+int _vsnprintf(char *str, size_t size, const char *format, va_list args);
+int _putenv(char *string);
+char *_getenv(const char *name);
+int _unsetenv(const char *name);
+int ccount_str(const char *str);
 #endif

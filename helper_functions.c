@@ -39,7 +39,7 @@ void _fprintf(const char *format, ...)
 {
 	char buffer[4096];
 	va_list args;
-	int length = vsnprintf(buffer, sizeof(buffer), format, args);
+	int length = _vsnprintf(buffer, sizeof(buffer), format, args);
 
 	va_start(args, format);
 	va_end(args);
@@ -58,7 +58,7 @@ void _fprintf(const char *format, ...)
 int _snprintf(char *buffer, size_t size, const char *format, ...)
 {
 	va_list args;
-	int length = vsnprintf(buffer, size, format, args);
+	int length = _vsnprintf(buffer, size, format, args);
 
 	va_start(args, format);
 	va_end(args);
@@ -115,4 +115,3 @@ char *mystrdup(const char *s)
 	}
 	return (dupstring);
 }
-

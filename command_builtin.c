@@ -99,10 +99,13 @@ void cd_builtin(char *directory)
 	write(STDOUT_FILENO, current_dir, count_str(current_dir));
 	write(STDOUT_FILENO, "\n", 1);
 }
+/**
+ * exit_shell_with_status - exit function
+ */
 void exit_shell_with_status(void)
 {
 	int status = 0;
-	status = 42;
 
+	status = 42;
 	exit(status);
 }
